@@ -1,0 +1,142 @@
+*{
+    margin: 0;
+}
+.productdescription{
+    padding: 10px 100px;
+    margin-top: 30px;
+    word-wrap: break-word;
+}
+
+.productdesc-container{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    background-color: cyan;
+    justify-content: space-between;
+}
+
+.prdt-desc-small-image{
+    background-color: brown;
+    height: 100%;
+    width: 10%;
+}
+
+.prdt-desc-small-image-children{
+    width: 79px;
+    height: 80px;
+    background-color: orangered;
+    margin-bottom: 33px;
+}
+
+.prdt-desc-big-image{
+    background-color: blue;
+    height: 100%;
+    width: 60%;
+}
+
+.prdt-desc-props{
+    background-color: red;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.prdt-desc-props-title-p{
+    font-family: 'Raleway';
+    font-style: normal;
+    /* font-weight: 600; */
+    font-size: 30px;
+}
+
+.prdt-desc-props-size-p{
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.prdt-desc-props-size-container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-desc-xs,.product-desc-s,.product-desc-l,.product-desc-m{
+    width: 50px;
+    height: 35px;
+    border: 1px solid #1D1F22;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-desc-xs p,.product-desc-s p,.product-desc-l p,.product-desc-m p{
+    font-family: 'Raleway','Source Sans Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 18px;
+}
+
+.prdt-desc-props-color-p{
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.product-desc-color-boxes{
+    display: flex;
+    background-color: yellow;
+}
+
+.product-desc-color-box{
+    width: 32px;
+    height: 32px;
+    border: 1px solid #5ECE7B;
+    margin-right: 10px;
+}
+
+.prdt-desc-props-price-p{
+    font-family: 'Roboto Condensed';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 18px;
+    text-transform: uppercase;
+}
+
+.prdt-desc-props-price-p2{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 18px;
+}
+
+.prdt-desc-props-tocart-btn{
+    width: 100%;
+    padding: 16px 32px;
+    border: none;
+    font-family: 'Raleway';
+    background: #5ECE7B;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 120%;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.prdt-desc-props-desc{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 159.96%;
+    color: #1D1F22;
+}

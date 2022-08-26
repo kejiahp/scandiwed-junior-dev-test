@@ -41,6 +41,7 @@
     position: relative;
     width: 30px;
     margin-left: 20px;
+    cursor: pointer;
 }
 
 .currency-text{
@@ -53,7 +54,7 @@
 .drop-icon{
     position: absolute;
     right: 0;
-    top: 30px;
+    top: 15px;
 }
 
 .logo-icons{

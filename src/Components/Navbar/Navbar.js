@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './Navbar.css'
-import { Cart,CurrencyDropDown,Logo,Cartwheels,Logosmile1,Logosmile2 } from '../../img/NavIcons'
+import { Cart,CurrencyDropDown,Logo,Cartwheels,Logosmile1,Logosmile2,CurrencyDropUp } from '../../img/NavIcons'
 import Navcart from '../Navbarcart/Navcart'
 import Navbarcurrency from '../Navbarcurrency/Navbarcurrency'
 
@@ -28,7 +28,7 @@ class Navbar extends Component{
                 <div className='nav-icons'>
                     <div className='currency' onClick={() => this.setState({navcurr: !this.state.navcurr})}>
                         <p className='currency-text'>$</p>
-                        <CurrencyDropDown classname={'drop-icon'} />
+                        {this.state.navcurr ? <CurrencyDropUp classname={'drop-icon'} /> : <CurrencyDropDown classname={'drop-icon'} />}
                     </div>
                     {this.state.navcurr && <div className='navcur-container'>
                         <Navbarcurrency />

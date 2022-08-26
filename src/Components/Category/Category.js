@@ -4,6 +4,7 @@ import Categoryitem from './CategoryItems/Categoryitem'
 
 class Category extends Component {
   render() {
+    console.log(this.props)
     return (
       <section className='category'>
         <h1 className='header'>Category name</h1>

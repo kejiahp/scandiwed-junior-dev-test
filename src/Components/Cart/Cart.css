@@ -1,0 +1,31 @@
+.cart{
+    margin-top: 30px;
+    padding: 10px 100px;
+    word-wrap: break-word;
+    margin-bottom: 60px;
+}
+
+.cartitems-container{
+    margin-top: 50px;
+    margin-bottom: 40px;
+    border-top: 1px solid #E5E5E5;
+}
+
+.cart-tax,.cart-total{
+    white-space: pre;
+}
+
+.cart-order-button{
+    width: 279px;
+    height: 43px;
+    background: #5ECE7B;
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 120%;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 30px;
+}
