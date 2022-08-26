@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './Categoryitem.css'
 import { Whitechart,Whitecartwheel } from '../../../img/NavIcons'
+import { withRouter } from 'react-router-dom'
 
 export class Categoryitem extends Component {
     constructor(props){
@@ -8,6 +9,17 @@ export class Categoryitem extends Component {
         this.state = {
             over: false
         }
+    }
+
+    onMouseOver = () => {
+        this.setState({over: true})
+    }
+
+    onMouseOut = () => {
+        this.setState({ over:false })
+    }
+    toDescriptionHandler = () => {
+        this.props.history.push("/product")
     }
 
   render() {
@@ -21,7 +33,7 @@ export class Categoryitem extends Component {
     }
 
     return (
-    <div className={itemstyle} onMouseOver={() => this.setState({over: true})} onMouseOut={() => this.setState({ over:false })}>
+    <div className={itemstyle} onClick={this.toDescriptionHandler} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
         {this.props.outofstock && <p className='out-stock'>OUT OF STOCK</p>}
         <div className='item-image'>
             <img src='' alt=''/>
@@ -46,4 +58,4 @@ export class Categoryitem extends Component {
   }
 }
 
-export default Categoryitem
+export default withRouter(Categoryitem)

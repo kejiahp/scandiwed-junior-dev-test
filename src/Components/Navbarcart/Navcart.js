@@ -14,7 +14,7 @@ class Navcart extends Component {
             <p><strong>$200.00</strong></p>
         </section>
         <section className='nav-cart-btn'>
-            <button className='view-bag-btn'>VIEW BAG</button>
+            <button className='view-bag-btn' onClick={this.props.viewcart}>VIEW BAG</button>
             <button className='check-out-btn'>CHECK OUT</button>
         </section>
       </div>
