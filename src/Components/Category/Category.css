@@ -1,0 +1,16 @@
+.category{
+    padding: 10px 60px;
+    word-wrap: break-word;
+}
+.header{
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 42px;
+}
+.item-container{
+    margin-top: 60px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    row-gap: 60px;
+}
