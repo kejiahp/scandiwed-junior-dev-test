@@ -5,17 +5,19 @@ import { Route, Switch} from 'react-router-dom';
 import Productdescription from './Components/ProductDescription/Productdescription';
 import Cart from './Components/Cart/Cart';
 // import Backdrop from './Components/Backdrop/Backdrop';
+import { Provider } from 'react-redux';
+import { store } from './state-management/store';
 
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <Navbar />
       <Switch>
         <Route path="/product" component={Productdescription}/>
         <Route path="/cart" component={Cart}/>
         <Route path="/" exact component={Category}/>
       </Switch>
-    </>
+    </Provider>
   );
 }
 

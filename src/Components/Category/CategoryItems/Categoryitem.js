@@ -19,7 +19,10 @@ export class Categoryitem extends Component {
         this.setState({ over:false })
     }
     toDescriptionHandler = () => {
-        this.props.history.push("/product")
+        this.props.history.push(`/product/${this.props.id}`)
+    }
+    toCartPage = () => {
+        this.props.history.push("/cart")
     }
 
   render() {
@@ -28,23 +31,27 @@ export class Categoryitem extends Component {
     if(this.state.over) {
         itemstyle = 'category-item category-item-shadow'
     }
-    if(this.props.outofstock) {
+    if(this.props.instock === false) {
         itemstyle = 'category-item-unavailable'
     }
 
     return (
-    <div className={itemstyle} onClick={this.toDescriptionHandler} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
-        {this.props.outofstock && <p className='out-stock'>OUT OF STOCK</p>}
-        <div className='item-image'>
-            <img src='' alt=''/>
-        </div>
-        <div className='item-text-holder'>
-            <p className='item-header'>Apollo Shirt</p>
-            <p className='item-subheader'>$50.00</p>
+    <div className={itemstyle} onMouseOver={this.onMouseOver} onMouseOut={this.onMouseOut}>
+        <div onClick={this.toDescriptionHandler}>
+
+            {this.props.instock === false && <p className='out-stock'>OUT OF STOCK</p>}
+            <div className='item-image'>
+                <img src={this.props.image} alt={this.props.name}/>
+            </div>
+            <div className='item-text-holder'>
+                <p className='item-header'>{this.props.name}</p>
+                <p className='item-subheader'>{this.props.symbol}{this.props.price.toLocaleString( {style: 'currency',currency: 'INR', minimumFractionDigits: 2})}</p>
+            </div>
+
         </div>
 
         {this.state.over && 
-            <div className='add-to-cart-icon'>
+            <div onClick={this.toCartPage} className='add-to-cart-icon'>
                 <div className='add-to-cart-subfolder'>
                     <Whitechart />
                     <Whitecartwheel classname='cartwheel1'/>

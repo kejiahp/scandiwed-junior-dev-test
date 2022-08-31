@@ -17,16 +17,11 @@
 
 .navbar ul li{
     list-style: none;
-}
-.navbar ul li:nth-child(2){
-    margin-left: 32px;
-}
-
-.navbar ul li:nth-child(3){
-    margin-left: 32px;
+    cursor: pointer;
+    box-sizing: border-box;
 }
 
-.navbar ul li a{
+.navbar ul li span{
     text-decoration: none;
     color: #1D1F22;
     font-family: 'Raleway';
@@ -35,7 +30,15 @@
     font-size: 16px;
 }
 
-.navbar ul li a:active{
+.navbar ul li:nth-child(2){
+    margin-left: 32px;
+}
+
+.navbar ul li:nth-child(3){
+    margin-left: 32px;
+}
+
+.navbar ul li span:hover{
     padding-bottom: 27px;
     border-bottom: 2px solid #5ECE7B;
 }

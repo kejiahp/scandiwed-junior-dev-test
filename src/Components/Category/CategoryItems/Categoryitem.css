@@ -28,6 +28,7 @@
     position: absolute;
     top: 180px;
     font-size: 20px;
+    right: 110px;
 }
 
 .category-item-shadow{
@@ -35,9 +36,14 @@
 }
 
 .item-image{
-    background-color: rebeccapurple;
     width: 354px;
-    height: 330px;
+    height: 340px;
+    margin-bottom: 20px;
+}
+
+.item-image img{
+    width: 100%;
+    height: 100%;
 }
 
 .item-header{
@@ -66,7 +72,7 @@
     height: 40px;
     width: 40px;
     background-color: #5ECE7B;
-    top: 310px;
+    top: 320px;
     right: 30px;
 }
 .add-to-cart-subfolder{

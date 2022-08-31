@@ -5,11 +5,27 @@ import Navcart from '../Navbarcart/Navcart'
 import Navbarcurrency from '../Navbarcurrency/Navbarcurrency'
 import Backdrop from '../Backdrop/Backdrop'
 import { withRouter } from 'react-router-dom'
+import { gql } from '@apollo/client/core'
+import { graphql } from '@apollo/client/react/hoc';
+import { connect } from 'react-redux'
+import { allCategory, clothesCategory, techCategory } from '../../state-management/actions/actions'
 
+const getCategories = gql`
+    {
+        categories{
+        name
+        }
+    }
+`
 class Navbar extends Component{
     state = {
         navcart: false,
-        navcurr: false
+        navcurr: false,
+        currencies: null
+    }
+
+    componentDidMount() {
+        this.setState({currencies:this.props.data})
     }
 
     backdropcloseHandler = () => {
@@ -19,16 +35,17 @@ class Navbar extends Component{
     viewCartHandler = () => {
         this.setState({navcart:false})
         this.props.history.push("/cart")
-      }
+    }
+
 
     render () {
         return (<>
         <Backdrop show={this.state.navcart} clicked={this.backdropcloseHandler}/>
                 <div className='navbar'>
                     <ul>
-                        <li><a href='/'>All</a></li>
-                        <li><a href='/'>Clothes</a></li>
-                        <li><a href='/'>Tech</a></li>
+                        <li onClick={() => this.props.allCategory()}><span> All </span></li>
+                        <li onClick={() => this.props.clothesCategory()}><span> Clothes </span></li>
+                        <li onClick={() => this.props.techCategory()}><span> Tech </span></li>
                     </ul>
             
                     <div className='logo-icons'>
@@ -64,4 +81,17 @@ class Navbar extends Component{
     }
 }
 
-export default withRouter(Navbar)
+const mapStateToProps = (state) => {
+    return (
+       { selectedCategory: state.categ.category}
+    )
+}
+const mapDispatchToProps = () => {
+    return (
+        {
+            allCategory,techCategory,clothesCategory
+        }
+    )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps())(graphql(getCategories)(withRouter(Navbar)))
