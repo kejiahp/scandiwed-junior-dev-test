@@ -2,6 +2,7 @@
     margin-top: 30px;
     padding: 50px 100px;
     word-wrap: break-word;
+    position: relative;
 }
 .header{
     font-family: 'Raleway';

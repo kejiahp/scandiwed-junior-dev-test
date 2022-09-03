@@ -1,3 +1,8 @@
+.lol{
+    padding-bottom: 27px;
+    border-bottom: 2px solid #5ECE7B;
+}
+
 .navbar{
     width: 100%;
     padding: 10px 60px;
@@ -38,10 +43,10 @@
     margin-left: 32px;
 }
 
-.navbar ul li span:hover{
+/* .navbar ul li span:hover{
     padding-bottom: 27px;
     border-bottom: 2px solid #5ECE7B;
-}
+} */
 
 .currency{
     position: relative;

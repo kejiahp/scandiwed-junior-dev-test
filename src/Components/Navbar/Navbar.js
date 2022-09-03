@@ -5,27 +5,64 @@ import Navcart from '../Navbarcart/Navcart'
 import Navbarcurrency from '../Navbarcurrency/Navbarcurrency'
 import Backdrop from '../Backdrop/Backdrop'
 import { withRouter } from 'react-router-dom'
-import { gql } from '@apollo/client/core'
-import { graphql } from '@apollo/client/react/hoc';
 import { connect } from 'react-redux'
 import { allCategory, clothesCategory, techCategory } from '../../state-management/actions/actions'
 
-const getCategories = gql`
-    {
-        categories{
-        name
-        }
-    }
-`
 class Navbar extends Component{
     state = {
         navcart: false,
-        navcurr: false,
-        currencies: null
+        navcurr: false
     }
 
     componentDidMount() {
-        this.setState({currencies:this.props.data})
+        //Category Select styling
+        const all = document.querySelector("#all")
+        const clothes = document.querySelector("#clothes")
+        const tech = document.querySelector("#tech")
+
+        if(this.props.selectedCategory === 'all') {
+            all.className="lol"
+            tech.className = ''
+            clothes.className = ''
+        }
+        if(this.props.selectedCategory === 'clothes') {
+            clothes.className="lol"
+            tech.className = ''
+            all.className = ''
+        }
+        if(this.props.selectedCategory === 'tech') {
+            tech.className='lol'
+            all.className = ''
+            clothes.className = ''
+        }
+    }
+
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevProps.selectedCategory !== this.props.selectedCategory){
+            //Category Select styling
+            const all = document.querySelector("#all")
+            const clothes = document.querySelector("#clothes")
+            const tech = document.querySelector("#tech")
+
+            if(this.props.selectedCategory === 'all') {
+                all.className="lol"
+                tech.className = ''
+                clothes.className = ''
+            }
+            if(this.props.selectedCategory === 'clothes') {
+                clothes.className="lol"
+                tech.className = ''
+                all.className = ''
+            }
+            if(this.props.selectedCategory === 'tech') {
+                tech.className='lol'
+                all.className = ''
+                clothes.className = ''
+            }
+        }
+        
+
     }
 
     backdropcloseHandler = () => {
@@ -39,13 +76,14 @@ class Navbar extends Component{
 
 
     render () {
+
         return (<>
         <Backdrop show={this.state.navcart} clicked={this.backdropcloseHandler}/>
                 <div className='navbar'>
                     <ul>
-                        <li onClick={() => this.props.allCategory()}><span> All </span></li>
-                        <li onClick={() => this.props.clothesCategory()}><span> Clothes </span></li>
-                        <li onClick={() => this.props.techCategory()}><span> Tech </span></li>
+                        <li id='all' onClick={() => this.props.allCategory()}><span> All </span></li>
+                        <li id='clothes' onClick={() => this.props.clothesCategory()}><span> Clothes </span></li>
+                        <li id='tech' onClick={() => this.props.techCategory()}><span> Tech </span></li>
                     </ul>
             
                     <div className='logo-icons'>
@@ -94,4 +132,4 @@ const mapDispatchToProps = () => {
     )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps())(graphql(getCategories)(withRouter(Navbar)))
+export default connect(mapStateToProps, mapDispatchToProps())(withRouter(Navbar))

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './Categoryitem.css'
 import { Whitechart,Whitecartwheel } from '../../../img/NavIcons'
 import { withRouter } from 'react-router-dom'
+import { openSelector, closeSelector } from '../../../state-management/actions/actions'
+import { connect } from 'react-redux'
 
 export class Categoryitem extends Component {
     constructor(props){
@@ -19,10 +21,14 @@ export class Categoryitem extends Component {
         this.setState({ over:false })
     }
     toDescriptionHandler = () => {
-        this.props.history.push(`/product/${this.props.id}`)
+        this.props.history.push({
+            pathname: '/product',
+            state: {id:this.props.id}
+        })
     }
-    toCartPage = () => {
-        this.props.history.push("/cart")
+
+    closeAttributeSelector = () => {
+        this.props.openSelector(this.props.id)
     }
 
   render() {
@@ -45,13 +51,13 @@ export class Categoryitem extends Component {
             </div>
             <div className='item-text-holder'>
                 <p className='item-header'>{this.props.name}</p>
-                <p className='item-subheader'>{this.props.symbol}{this.props.price.toLocaleString( {style: 'currency',currency: 'INR', minimumFractionDigits: 2})}</p>
+                <p className='item-subheader'>{this.props.symbol}{this.props.price.toLocaleString( {style: 'currency', minimumFractionDigits: 2})}</p>
             </div>
 
         </div>
 
         {this.state.over && 
-            <div onClick={this.toCartPage} className='add-to-cart-icon'>
+            <div onClick={this.closeAttributeSelector} className='add-to-cart-icon'>
                 <div className='add-to-cart-subfolder'>
                     <Whitechart />
                     <Whitecartwheel classname='cartwheel1'/>
@@ -59,10 +65,25 @@ export class Categoryitem extends Component {
                 </div>
             </div>
         }
+       
 
       </div>
     )
   }
 }
 
-export default withRouter(Categoryitem)
+
+const mapStateToProps = (state) => {
+    return(
+      {category_name: state.categ.category, currency: state.curr.label, selector: state.categ.attributeSelector}
+    )
+  }
+
+
+const mapDispatchToProps = () => {
+    return {
+        openSelector, closeSelector
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps())(withRouter(Categoryitem))
