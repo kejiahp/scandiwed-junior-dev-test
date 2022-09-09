@@ -61,6 +61,10 @@ class Navbar extends Component{
                 clothes.className = ''
             }
         }
+
+        if(prevProps.currency !== this.props.currency){
+            this.setState({navcurr: false})   
+        }
         
 
     }
@@ -72,6 +76,15 @@ class Navbar extends Component{
     viewCartHandler = () => {
         this.setState({navcart:false})
         this.props.history.push("/cart")
+    }
+
+    isCartEmpty = () => {
+        if(this.props.cartNo.cartItemNumber !==0 ) {
+            alert('Currency can only be changed if cart is empty')
+        }
+        else{
+            this.setState({navcurr: !this.state.navcurr})   
+        }
     }
 
 
@@ -93,11 +106,12 @@ class Navbar extends Component{
                     </div>
             
                     <div className='nav-icons'>
-                        <div className='currency' onClick={() => this.setState({navcurr: !this.state.navcurr})}>
+                        <div className='currency' onClick={this.isCartEmpty}>
                             <p className='currency-text'>$</p>
                             {this.state.navcurr ? <CurrencyDropUp classname={'drop-icon'} /> : <CurrencyDropDown classname={'drop-icon'} />}
                         </div>
-                        {this.state.navcurr && <div className='navcur-container'>
+                        {/* currency can only be changed if cart is empty */}
+                        {this.props.cartNo.cartItemNumber === 0 && this.state.navcurr && <div className='navcur-container'>
                             <Navbarcurrency />
                         </div>}
                         <div className='cart-icon' onClick={() => this.setState({navcart: !this.state.navcart})}>
@@ -105,7 +119,7 @@ class Navbar extends Component{
                             <Cartwheels classname={'cart-wheel1'}/>
                             <Cartwheels classname={'cart-wheel2'}/>
                             <div className='cart-count'>
-                                <p>3</p>
+                                <p>{this.props.cartNo.cartItemNumber}</p>
                             </div>
                         </div>
                         {this.state.navcart && <div className='navcart-container'>
@@ -121,7 +135,7 @@ class Navbar extends Component{
 
 const mapStateToProps = (state) => {
     return (
-       { selectedCategory: state.categ.category}
+       { selectedCategory: state.categ.category, cartNo: state.cart, currency: state.curr.label}
     )
 }
 const mapDispatchToProps = () => {

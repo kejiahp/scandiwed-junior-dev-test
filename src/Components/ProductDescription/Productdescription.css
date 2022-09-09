@@ -105,16 +105,13 @@
 
 .product-desc-color-boxes{
     display: grid;
-    grid-template-columns: auto auto auto auto auto auto auto;
+    grid-template-columns: 25px 25px 25px 25px 25px 25px 25px;
     column-gap: 4px;
     row-gap: 10px;
 }
 
 .product-desc-color-box{
-    width: 20px;
-    height: 20px;
     cursor: pointer;
-    /* border: 1px solid #5ECE7B; */
 }
 
 .prdt-desc-props-price-p{
@@ -165,4 +162,9 @@
 .prdt-desc-props-price,
 .prdt-desc-props-tocart-btn{
     margin-bottom: 20px;
+}
+
+.add-to-cart-disabled{
+    cursor: not-allowed;
+    opacity: 0.5;
 }

@@ -77,3 +77,19 @@ export const CurrencyDropUp = ({classname}) => {
 </svg>
     )
 }
+
+export const ForwardArrow = ({classname,clicked}) => {
+    return (
+        <svg className={classname} onClick={clicked} xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+        <path d="M0.75 1.06808L6.375 6.68711L0.75 12.3062" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}
+
+export const BackwardArrow = ({classname, clicked}) => {
+    return (
+        <svg className={classname} onClick={clicked} xmlns="http://www.w3.org/2000/svg" width="8" height="14" viewBox="0 0 8 14" fill="none">
+        <path d="M7.25 1.06857L1.625 6.6876L7.25 12.3066" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+    )
+}

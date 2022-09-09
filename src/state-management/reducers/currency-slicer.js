@@ -1,28 +1,28 @@
 import { usd, aud, gbp, rub, jpy } from "../actions/currency-actions";
 
-const initialState = { label:"USD" }
+const initialState = { label:"USD", symbol: '$' }
 
 export const currencySlicer = (state=initialState, action) => {
     switch(action.type) {
         case usd:
             return {
-                ...state, label:"USD"
+                ...state, label:"USD", symbol: '$'
             }
         case aud:
             return {
-                ...state, label: "AUD"
+                ...state, label: "AUD", symbol: 'A$'
             }
         case gbp:
             return {
-                ...state, label: "GBP"
+                ...state, label: "GBP", symbol: '£'
             }
         case rub:
             return {
-                ...state, label: "RUB"
+                ...state, label: "RUB", symbol: '₽'
             }
         case jpy:
             return {
-                ...state, label: "JPY"
+                ...state, label: "JPY", symbol: '¥'
             }
         default:
             return state

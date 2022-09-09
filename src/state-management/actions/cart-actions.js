@@ -1,12 +1,7 @@
-export const addToCartPLP = () => {
+export const addToCart = (item) => {
     return {
-        type: 'ADD-PLP'
-    }
-}
-
-export const addToCartPDP = () => {
-    return {
-        type: 'ADD-PDP'
+        type: 'ADD',
+        payload: item
     }
 }
 
@@ -16,14 +11,16 @@ export const removeFromCart = () => {
     }
 }
 
-export const addMore = () => {
+export const addMore = (item) => {
     return {
-        type: 'ADD-MORE'
+        type: 'ADD-MORE',
+        payload: item
     }
 }
 
-export const removeSome = () => {
+export const removeSome = (item) => {
     return {
-        type: 'REMOVE-SOME'
+        type: 'REMOVE-SOME',
+        payload: item
     }
 }
