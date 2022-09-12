@@ -29,8 +29,8 @@ const mapStateToProps = (state) => {
   return {cart: state.cart, currency: state.curr}
 }
 
-const mapDispatchToProps = () => {
-  return {}
-}
+// const mapDispatchToProps = () => {
+//   return {}
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps())(Navcart)
+export default connect(mapStateToProps, null)(Navcart)

@@ -43,11 +43,6 @@
     margin-left: 32px;
 }
 
-/* .navbar ul li span:hover{
-    padding-bottom: 27px;
-    border-bottom: 2px solid #5ECE7B;
-} */
-
 .currency{
     position: relative;
     width: 30px;
@@ -70,6 +65,7 @@
 
 .logo-icons{
     position: relative;
+    cursor: pointer;
 }
 
 .logo-smile1{

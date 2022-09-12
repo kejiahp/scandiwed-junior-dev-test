@@ -3,14 +3,13 @@ import './Productdescription.css'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { addToCart } from '../../state-management/actions/cart-actions'
-import { closeSelector } from '../../state-management/actions/actions'
 
 
 class Productdescription extends Component {
     state = {
         bigImage: null,
         data: null,
-        attribute: {
+        attributex: {
             id: null,
             name: null,
             brand: null,
@@ -32,7 +31,7 @@ class Productdescription extends Component {
     }
 
     setTextAttrHandler = (attr) => {
-        const copyAttr = {...this.state.attribute}
+        const copyAttr = {...this.state.attributex}
         //Check if the attribute.text property is empty or not
         if(copyAttr.attributes.text.length >0 ){
           //for every all-rounder true go's to the if statement
@@ -65,7 +64,7 @@ class Productdescription extends Component {
       }
     
       setSwatchAttrHandler = (attr) => {
-        const copyAttr = {...this.state.attribute}
+        const copyAttr = {...this.state.attributex}
         //Check if the attribute.swatch property is empty or not
         if(copyAttr.attributes.swatch.length >0 ){
             const result = copyAttr.attributes.swatch.every(item => {
@@ -93,11 +92,9 @@ class Productdescription extends Component {
       }
 
       addItemToCart = () => {
-        let item = {...this.state.attribute}
+        let item = {...this.state.attributex}
         this.props.addToCart(item)
-        // item.attributes.text = []
-        // item.attributes.swatch = []
-        // this.setState({attribute: item})
+        this.props.history.push("/cart")
       }
 
     componentDidMount() {
@@ -145,7 +142,7 @@ class Productdescription extends Component {
             })
       
       
-            const attributeCopy = {...this.state.attribute}
+            const attributeCopy = {...this.state.attributex}
             attributeCopy.id = res.data.product.id
             attributeCopy.name = res.data.product.name
             attributeCopy.brand = res.data.product.brand
@@ -153,7 +150,7 @@ class Productdescription extends Component {
             attributeCopy.gallery = res.data.product.gallery
             attributeCopy.price = price_det.amount
 
-            this.setState({data: res.data.product, bigImage: res.data.product.gallery[0], attribute: attributeCopy})
+            this.setState({data: res.data.product, bigImage: res.data.product.gallery[0], attributex: attributeCopy})
         })
         
     
@@ -165,7 +162,7 @@ class Productdescription extends Component {
     //Function to give selected Text attribute a background color
     const selectedTextColorHandler = (attr) => {
         let selectedStyle = {}
-        const copyAttr = {...this.state.attribute}
+        const copyAttr = {...this.state.attributex}
         if(copyAttr.attributes.text.length >0 ){
             // const result = copyAttr.attributes.text.every(item => {
             //   let key = Object.keys(attr)[0]
@@ -197,7 +194,7 @@ class Productdescription extends Component {
           //Function to give selected swatch attribute a background color
     const selectedSwatchColorHandler = (attr) => {
         let selectedStyle = {}
-        const copyAttr = {...this.state.attribute}
+        const copyAttr = {...this.state.attributex}
         if(copyAttr.attributes.swatch.length >0 ){
             const result = copyAttr.attributes.swatch.every(item => {
               let key = Object.keys(attr)[0]
@@ -217,7 +214,7 @@ class Productdescription extends Component {
         return selectedStyle
       }
 
-      // console.log('[PRODUCT DESC]', this.state.attribute)
+      // console.log('[PRODUCT DESC]', this.state.attributex)
 
     const price_det = {}
     let selections = ''
@@ -316,8 +313,8 @@ class Productdescription extends Component {
     
             attr_type.forEach(atrrItem => {
                 if(atrrItem.type === 'text') {
-                  this.state.attribute.attributes.text.forEach(item => {
-                    //checks if option is in this.state.attribute if so it as been selected
+                  this.state.attributex.attributes.text.forEach(item => {
+                    //checks if option is in this.state.attributex if so it as been selected
                     //then counter decreases by one, same logic for swatch until it becomes zero
                     //then add to cart button is shown
                     if(Object.keys(item)[0] === atrrItem.name) {
@@ -327,7 +324,7 @@ class Productdescription extends Component {
                 }
     
                 if(atrrItem.type === 'swatch') {
-                  this.state.attribute.attributes.swatch.forEach(item => {
+                  this.state.attributex.attributes.swatch.forEach(item => {
                     if(Object.keys(item)[0] === atrrItem.name ) {
                       counter--
                     }
@@ -383,7 +380,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = () => {
-    return {addToCart,closeSelector}
+    return {addToCart}
   }
 
 export default connect(mapStateToProps , mapDispatchToProps())(withRouter(Productdescription))

@@ -87,6 +87,10 @@ class Navbar extends Component{
         }
     }
 
+    goHome = () => {
+        this.props.history.push("/")
+    }
+
 
     render () {
 
@@ -99,7 +103,7 @@ class Navbar extends Component{
                         <li id='tech' onClick={() => this.props.techCategory()}><span> Tech </span></li>
                     </ul>
             
-                    <div className='logo-icons'>
+                    <div className='logo-icons' onClick={this.goHome}>
                         <Logo />
                         <Logosmile1 classname={'logo-smile1'}/>
                         <Logosmile2 classname={'logo-smile2'}/>
