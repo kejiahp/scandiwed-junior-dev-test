@@ -3,6 +3,8 @@ import './Productdescription.css'
 import { withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
 import { addToCart } from '../../state-management/actions/cart-actions'
+import { closeSelector } from '../../state-management/actions/actions'
+
 
 class Productdescription extends Component {
     state = {
@@ -50,6 +52,7 @@ class Productdescription extends Component {
             else{
                 const result2 = copyAttr.attributes.text.filter(item => Object.keys(item)[0] !== Object.keys(attr)[0])
                 copyAttr.attributes.text = result2
+                this.setState({attribute: copyAttr})
                 copyAttr.attributes.text.push(attr)
                 this.setState({attribute: copyAttr})
             }
@@ -92,6 +95,9 @@ class Productdescription extends Component {
       addItemToCart = () => {
         let item = {...this.state.attribute}
         this.props.addToCart(item)
+        // item.attributes.text = []
+        // item.attributes.swatch = []
+        // this.setState({attribute: item})
       }
 
     componentDidMount() {
@@ -161,12 +167,20 @@ class Productdescription extends Component {
         let selectedStyle = {}
         const copyAttr = {...this.state.attribute}
         if(copyAttr.attributes.text.length >0 ){
-            const result = copyAttr.attributes.text.every(item => {
+            // const result = copyAttr.attributes.text.every(item => {
+            //   let key = Object.keys(attr)[0]
+            //   let value = Object.values(attr)[0]
+            //   //if the attribute name and attribute values are the same give it a background color
+            //   if(key === Object.keys(item)[0] && value === Object.values(item)[0] ){return true}
+            //   else{return false}
+            // })
+            let result = false
+            copyAttr.attributes.text.forEach(item => {
               let key = Object.keys(attr)[0]
               let value = Object.values(attr)[0]
               //if the attribute name and attribute values are the same give it a background color
-              if(key in item && value === Object.values(item)[0] ){return true}
-              else{return false}
+              if(key === Object.keys(item)[0] && value === Object.values(item)[0] ){result = true}
+              else{result = false}
             })
     
             if(result) {
@@ -202,6 +216,8 @@ class Productdescription extends Component {
 
         return selectedStyle
       }
+
+      // console.log('[PRODUCT DESC]', this.state.attribute)
 
     const price_det = {}
     let selections = ''
@@ -286,7 +302,7 @@ class Productdescription extends Component {
             return <div key={index} onClick={setBigImage} className='prdt-desc-small-image-children'>
                 <img src={item} alt=""/>
             </div>
-        })  
+        })
 
         brand = this.state.data.brand
         name = this.state.data.name
@@ -363,11 +379,11 @@ class Productdescription extends Component {
 }
 
 const mapStateToProps = (state) => {
-    return {category_name: state.categ.category, currency: state.curr.label}
+    return {category_name: state.categ.category, currency: state.curr.label, cart: state.cart.cartItems}
 }
 
 const mapDispatchToProps = () => {
-    return {addToCart}
+    return {addToCart,closeSelector}
   }
 
 export default connect(mapStateToProps , mapDispatchToProps())(withRouter(Productdescription))

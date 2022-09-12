@@ -214,7 +214,7 @@ class Attibuteselector extends Component {
         attr_type.forEach(atrrItem => {
             if(atrrItem.type === 'text') {
               this.state.attribute.attributes.text.forEach(item => {
-                //checks if option is in this.state.attribute if so it as been selected
+                //checks if the option is in this.state.attribute, if so it as been selected
                 //then counter decreases by one, same logic for swatch until it becomes zero
                 //then add to cart button is shown
                 if(Object.keys(item)[0] === atrrItem.name) {

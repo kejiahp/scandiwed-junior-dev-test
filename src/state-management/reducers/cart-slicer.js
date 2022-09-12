@@ -1,3 +1,5 @@
+import { add, addmore, removesome } from "../actions/cart-actions"
+
 const initialState = {
     cartItems: [],
     cartItemNumber: 0,
@@ -5,7 +7,7 @@ const initialState = {
 }
 
 export const cartSlicer = (state = initialState, action) => {
-        if (action.type === 'ADD'){
+        if (action.type === add){
             let newstate = { ...state }
             let topItem = null
 
@@ -79,11 +81,7 @@ export const cartSlicer = (state = initialState, action) => {
             return { ...newstate }
         }
 
-        else if(action.type === 'REMOVE') {
-            return {}
-        }
-
-        else if(action.type === 'ADD-MORE'){
+        else if(action.type === addmore){
             const newstate = {...state}
             let topItem = null
 
@@ -143,7 +141,7 @@ export const cartSlicer = (state = initialState, action) => {
             return {...newstate}
         }
 
-        else if(action.type === 'REMOVE-SOME'){
+        else if(action.type === removesome){
             const newstate = {...state}
             let topItem = null
 
